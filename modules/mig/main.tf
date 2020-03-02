@@ -52,6 +52,7 @@ resource "google_compute_region_instance_group_manager" "mig" {
   }
   target_pools = var.target_pools
   target_size  = var.autoscaling_enabled ? var.min_replicas : var.target_size
+  
   wait_for_instances = var.wait_for_instances
 
   auto_healing_policies {

@@ -50,6 +50,11 @@ variable "distribution_policy_zones" {
   default     = []
 }
 
+variable "wait_for_instances" {
+  description = "Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the operation does not succeed, Terraform will continue trying until it times out."
+  default = true
+}
+
 #################
 # Rolling Update
 #################

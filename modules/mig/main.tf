@@ -42,7 +42,7 @@ resource "google_compute_region_instance_group_manager" "mig" {
   }
 
   name   = "${var.hostname}-mig"
-  region = var.region
+  zone = var.zone
   dynamic "named_port" {
     for_each = var.named_ports
     content {
@@ -60,7 +60,6 @@ resource "google_compute_region_instance_group_manager" "mig" {
     initial_delay_sec = length(local.healthchecks) > 0 ? var.hc_initial_delay_sec : 0
   }
 
-  distribution_policy_zones = local.distribution_policy_zones
   dynamic "update_policy" {
     for_each = var.update_policy
     content {
@@ -76,7 +75,6 @@ resource "google_compute_region_instance_group_manager" "mig" {
 
   lifecycle {
     create_before_destroy = true
-    ignore_changes        = [distribution_policy_zones]
   }
 }
 

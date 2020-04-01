@@ -31,7 +31,7 @@ data "google_compute_zones" "available" {
   region  = var.region
 }
 
-resource "google_compute_region_instance_group_manager" "mig" {
+resource "google_compute_instance_group_manager" "mig" {
   provider           = google-beta
   base_instance_name = var.hostname
   project            = var.project_id

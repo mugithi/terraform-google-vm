@@ -41,7 +41,7 @@ resource "google_compute_instance_group_manager" "mig" {
     instance_template = var.instance_template
   }
 
-  name   = "${var.hostname}-mig"
+  name = "${var.hostname}-mig"
   zone = var.zone
   dynamic "named_port" {
     for_each = var.named_ports
@@ -52,7 +52,7 @@ resource "google_compute_instance_group_manager" "mig" {
   }
   target_pools = var.target_pools
   target_size  = var.autoscaling_enabled ? var.min_replicas : var.target_size
-  
+
   wait_for_instances = var.wait_for_instances
 
   auto_healing_policies {
@@ -78,13 +78,13 @@ resource "google_compute_instance_group_manager" "mig" {
   }
 }
 
-resource "google_compute_region_autoscaler" "autoscaler" {
+resource "google_compute_autoscaler" "autoscaler" {
   provider = google
   count    = var.autoscaling_enabled ? 1 : 0
   name     = "${var.hostname}-autoscaler"
   project  = var.project_id
   region   = var.region
-  target   = google_compute_region_instance_group_manager.mig.self_link
+  target   = google_compute_instance_group_manager.mig.self_link
 
   autoscaling_policy {
     max_replicas    = var.max_replicas

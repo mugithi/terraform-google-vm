@@ -29,6 +29,10 @@ variable "region" {
   description = "The GCP region where the managed instance group resides."
 }
 
+variable "zone" {
+  default = ""
+}
+
 variable "instance_template" {
   description = "Instance template self_link used to create compute instances"
 }
@@ -52,7 +56,7 @@ variable "distribution_policy_zones" {
 
 variable "wait_for_instances" {
   description = "Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the operation does not succeed, Terraform will continue trying until it times out."
-  default = true
+  default     = true
 }
 
 #################

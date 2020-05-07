@@ -91,6 +91,8 @@ variable "additional_disks" {
   type = list(object({
     auto_delete  = bool
     boot         = bool
+    source 	 = string
+    mode 	 = string
   }))
   default = []
 }

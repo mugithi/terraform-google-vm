@@ -74,7 +74,7 @@ resource "google_compute_instance_group_manager" "mig" {
   }
 
   lifecycle {
-    create_before_destroy = true
+    create_before_destroy = false
   }
 }
 

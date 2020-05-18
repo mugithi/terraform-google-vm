@@ -66,9 +66,7 @@ variable "wait_for_instances" {
 variable "update_policy" {
   description = "The rolling update policy. https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html#rolling_update_policy"
   type = list(object({
-    max_surge_fixed         = number
     max_surge_percent       = number
-    max_unavailable_fixed   = number
     max_unavailable_percent = number
     min_ready_sec           = number
     minimal_action          = string

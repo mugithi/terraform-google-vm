@@ -93,6 +93,7 @@ variable "additional_disks" {
     boot         = bool
     source	 = string
     mode	 = string
+    device_name  = string
   }))
   default = []
 }

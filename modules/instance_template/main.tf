@@ -42,7 +42,7 @@ locals {
     },
   ]
 
-  all_disks = "${var.shared_pd_disk_create == "true" ? concat(local.boot_disk, var.additional_disks) : local.boot_disk }"
+  all_disks = "${var.shared_pd_disk_create == "true" ? concat(local.boot_disk, var.additional_disks) : concat(local.boot_disk, ) }"
 
   # NOTE: Even if all the shielded_instance_config values are false, if the
   # config block exists and an unsupported image is chosen, the apply will fail

@@ -177,3 +177,8 @@ variable "access_config" {
   }))
   default = []
 }
+
+variable "create_shared_pd" {
+  default = "false"
+  description = "If set to create a shared pd, mount shaared pd to instance shared pd, else do not mount"
+}

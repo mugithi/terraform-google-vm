@@ -77,13 +77,6 @@ resource "google_compute_instance_template" "tpl" {
       source       = lookup(disk.value, "source", null)
       source_image = lookup(disk.value, "source_image", null)
       type         = lookup(disk.value, "type", null)
-
-      dynamic "disk_encryption_key" {
-        for_each = lookup(disk.value, "disk_encryption_key", null )
-        content {
-          kms_key_self_link = lookup(disk_encryption_key.value, "kms_key_self_link", null)
-        }
-      }
     }
   }
 
